@@ -21,11 +21,11 @@
 - name: Enable Objects
   ansible.builtin.include_tasks: enable_feature.yml
   when:
-    - nutanix_objects_current_state.json.service_enablement_status != "ENABLED"
-    - nutanix_objects_enable | default(False)
+    - nutanix_objects_current_state.json.service_enablement_status | lower != "enabled"
+    - nutanix_objects_enable | default(false)
 
 - name: Disable Objects
   ansible.builtin.include_tasks: disable_feature.yml
   when:
-    - nutanix_objects_current_state.json.service_enablement_status == "ENABLED"
-    - nutanix_objects_enable | default(True)
+    - nutanix_objects_current_state.json.service_enablement_status| lower == "enabled"
+    - nutanix_objects_enable | default(true)
