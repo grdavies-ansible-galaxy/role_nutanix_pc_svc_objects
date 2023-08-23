@@ -2,7 +2,6 @@
 
 This Ansible role manage the Objects service within Prism Central.
 
-
 ## Role Variables
 
 | Variable                                          | Required | Default | Choices                   | Comments                                                                                               |
@@ -11,19 +10,17 @@ This Ansible role manage the Objects service within Prism Central.
 | nutanix_username                                  | no       | "admin" |                           | A valid username with appropriate rights to access the Nutanix API.                                    |
 | nutanix_password                                  | yes      |         |                           | A valid password for the supplied username.                                                            |
 | nutanix_port                                      | no       | 9440    |                           | The Prism TCP port                                                                                     |
-| validate_certs                                    | no       | no      | yes / no                  | Whether to check if Prism UI certificates are valid.                                                   |
-| nutanix_debug                                     | no       | no      | yes / no                  | Whether to output variable contents for debugging purposes.                                            |
-| nutanix_objects_enable                            | yes      |         | yes / no                  | Set value to 'yes' to enable Objects.                                                                  |
-
+| validate_certs                                    | no       | false   | true / false              | Whether to check if Prism UI certificates are valid.                                                   |
+| nutanix_debug                                     | no       | false   | true / false              | Whether to output variable contents for debugging purposes.                                            |
+| nutanix_objects_enable                            | yes      |         | true / false              | Set to 'true' to enable Objects.                                                                       |
 
 ## Dependencies
 
 None
 
-
 ## Example Playbook
 
-```
+```YAML
 - hosts: localhost
   gather_facts: false
   roles:
@@ -32,9 +29,8 @@ None
     nutanix_host: 10.38.179.39
     nutanix_username: admin
     nutanix_password: nx2Tech283!
-    nutanix_objects_enable: yes
+    nutanix_objects_enable: true
 ```
-
 
 ## License
 
