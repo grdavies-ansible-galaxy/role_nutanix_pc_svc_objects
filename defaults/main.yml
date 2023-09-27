@@ -1,8 +1,8 @@
 ---
 # defaults file for nutanix_role_prism_calm
-nutanix_host: ""
-nutanix_username: ""
-nutanix_password: ""
-nutanix_port: 9440
-validate_certs: false
-nutanix_debug: false
+role_nutanix_pc_svc_objects_host: ""
+role_nutanix_pc_svc_objects_username: ""
+role_nutanix_pc_svc_objects_password: ""
+role_nutanix_pc_svc_objects_port: 9440
+role_nutanix_pc_svc_objects_validate_certs: false
+role_nutanix_pc_svc_objects_debug: false

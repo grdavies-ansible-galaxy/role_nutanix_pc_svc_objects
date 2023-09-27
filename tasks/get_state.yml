@@ -1,21 +1,21 @@
 ---
 - name: Get current Objects Enablement Status
   uri:
-    url: "https://{{ nutanix_host }}:{{ nutanix_port }}/api/nutanix/v3/services/oss/status"
+    url: "https://{{ role_nutanix_prism_api_url_base }}/api/nutanix/v3/services/oss/status"
     method: GET
-    validate_certs: "{{ validate_certs }}"
+    validate_certs: "{{ role_nutanix_pc_svc_objects_validate_certs }}"
     body_format: json
     status_code: 200
     headers:
-      Authorization: "{{ nutanix_api_auth }}"
-  register: nutanix_objects_current_state
+      Authorization: "{{ role_nutanix_prism_api_auth_string_b64 }}"
+  register: role_nutanix_pc_svc_objects_state
 
-- name: Debug nutanix_objects_current_state
+- name: Debug role_nutanix_pc_svc_objects_state
   debug:
-    var: nutanix_objects_current_state
+    var: role_nutanix_pc_svc_objects_state
   when:
-    - nutanix_debug
+    - role_nutanix_pc_svc_objects_debug
 
 - name: Current status of Nutanix Objects service(s)
   debug:
-    msg: "Nutanix Objects is currently in a '{{ nutanix_objects_current_state.json.service_enablement_status | lower }}' state."
+    msg: "Nutanix Objects is currently in a '{{ role_nutanix_pc_svc_objects_state.json.service_enablement_status | lower }}' state."
